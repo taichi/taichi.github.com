@@ -1,16 +1,772 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Between design and implementation]]></title>
   <link href="http://taichi.github.com/atom.xml" rel="self"/>
   <link href="http://taichi.github.com/"/>
-  <updated>2012-03-09T03:36:16+09:00</updated>
+  <updated>2012-03-09T06:36:05+09:00</updated>
   <id>http://taichi.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[taichi]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Windows7 64bitでjekyllをセットアップする祭]]></title>
+    <link href="http://taichi.github.com/blog/2012/03/09/setup-octopress-on-windows7-x64/"/>
+    <updated>2012-03-09T03:56:00+09:00</updated>
+    <id>http://taichi.github.com/blog/2012/03/09/setup-octopress-on-windows7-x64</id>
+    <content type="html"><![CDATA[<p>オレオレビルドを作り始めたりすると目的を見失いかねないので簡単そうなインストーラを使う。</p>
+
+<p><a href="http://rubyinstaller.org/downloads/">rubyinstaller.org</a></p>
+
+<p>rubyinstaller-1.9.3-p125.exe</p>
+
+<p>をダウンロードしてインストール。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/01_rubyinstaller.png"></p>
+
+<p>Gitクライアントが必要らしいが、msysgitはハマるので普段使っているegitを使う。</p>
+
+<p><a href="http://eclipse.org/egit/">egit</a></p>
+
+<p>後は、Jekyllのドキュメント通りにやる感じで。</p>
+
+<p><a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> gem install jekyll</span></code></pre></td></tr></table></div></figure>
+
+
+<p>エラーがでよる…</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> Fetching: liquid-2.3.0.gem (100%)
+</span><span class='line'> Fetching: fast-stemmer-1.0.0.gem (100%)
+</span><span class='line'> ERROR:  Error installing jekyll:
+</span><span class='line'>        The 'fast-stemmer' native gem requires installed build tools.
+</span><span class='line'>
+</span><span class='line'> Please update your PATH to include build tools or download the DevKit
+</span><span class='line'> from 'http://rubyinstaller.org/downloads' and follow the instructions
+</span><span class='line'> at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</p>
+
+<p>は単なる自己解凍書庫なので指定したパスに何か色々解凍される。
+とりあえずこのパスに解凍した。</p>
+
+<p> C:\Ruby193\devkit</p>
+
+<p>エラーメッセージに入ってるURLに書いてある通りに操作する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> cd C:\Ruby193\devkit
+</span><span class='line'> ruby dk.rb init
+</span><span class='line'>
+</span><span class='line'> [INFO] found RubyInstaller v1.9.3 at C:/Ruby193
+</span><span class='line'> 
+</span><span class='line'> Initialization complete! Please review and modify the auto-generated
+</span><span class='line'> 'config.yml' file to ensure it contains the root directories to all
+</span><span class='line'> of the installed Rubies you want enhanced by the DevKit.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>config.ymlが生成されてさっきインストールしたrubyのパスが入っている。
+僕の環境にはRubyは１つしか無いので特に修正する必要は無いようだ。
+何かdevkitのインストール的なアレを実行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> ruby dk.rb install
+</span><span class='line'>
+</span><span class='line'> [INFO] Updating convenience notice gem override for 'C:/Ruby193'
+</span><span class='line'> [INFO] Installing 'C:/Ruby193/lib/ruby/site_ruby/devkit.rb'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>何かメッセージが出た。成功したのかね。テストインストールしてみれとあるのでやる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> gem install rdiscount --platform=ruby
+</span><span class='line'>
+</span><span class='line'> Fetching: rdiscount-1.6.8.gem (100%)
+</span><span class='line'> Temporarily enhancing PATH to include DevKit...
+</span><span class='line'> Building native extensions.  This could take a while...
+</span><span class='line'> Successfully installed rdiscount-1.6.8
+</span><span class='line'> 1 gem installed
+</span><span class='line'> Installing ri documentation for rdiscount-1.6.8...
+</span><span class='line'> Installing RDoc documentation for rdiscount-1.6.8...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ズラズラとログが流れる。上手くいってる様だ。このrdiscountが動くかどうか確かめる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> ruby -rubygems -e "require 'rdiscount'; puts RDiscount.new('**Hello RubyInstaller**').to_html"
+</span><span class='line'> 
+</span><span class='line'> &lt;p&gt;&lt;strong&gt;Hello RubyInstaller&lt;/strong&gt;&lt;/p&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>それっぽいHTMLが標準出力されるので動いている。</p>
+
+<p>では、もう一回jekyllをインストールしようとしてみる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> gem install jekyll</span></code></pre></td></tr></table></div></figure>
+
+
+<p>沢山のログがでる。上手くいっている様だ。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> Temporarily enhancing PATH to include DevKit...
+</span><span class='line'> Building native extensions.  This could take a while...
+</span><span class='line'> Fetching: classifier-1.3.3.gem (100%)
+</span><span class='line'> Fetching: directory_watcher-1.4.1.gem (100%)
+</span><span class='line'> Fetching: syntax-1.0.0.gem (100%)
+</span><span class='line'> Fetching: maruku-0.6.0.gem (100%)
+</span><span class='line'> Fetching: kramdown-0.13.5.gem (100%)
+</span><span class='line'> Fetching: posix-spawn-0.3.6.gem (100%)
+</span><span class='line'> Building native extensions.  This could take a while...
+</span><span class='line'> Fetching: albino-1.3.3.gem (100%)
+</span><span class='line'> Fetching: jekyll-0.11.2.gem (100%)
+</span><span class='line'> Successfully installed fast-stemmer-1.0.0
+</span><span class='line'> Successfully installed classifier-1.3.3
+</span><span class='line'> Successfully installed directory_watcher-1.4.1
+</span><span class='line'> Successfully installed syntax-1.0.0
+</span><span class='line'> Successfully installed maruku-0.6.0
+</span><span class='line'> Successfully installed kramdown-0.13.5
+</span><span class='line'> Successfully installed posix-spawn-0.3.6
+</span><span class='line'> Successfully installed albino-1.3.3
+</span><span class='line'> Successfully installed jekyll-0.11.2
+</span><span class='line'> 9 gems installed
+</span><span class='line'> Installing ri documentation for fast-stemmer-1.0.0...
+</span><span class='line'> Installing ri documentation for classifier-1.3.3...
+</span><span class='line'> Installing ri documentation for directory_watcher-1.4.1...
+</span><span class='line'> Installing ri documentation for syntax-1.0.0...
+</span><span class='line'> Installing ri documentation for maruku-0.6.0...
+</span><span class='line'> Couldn't find file to include 'MaRuKu.txt' from lib/maruku.rb
+</span><span class='line'> Installing ri documentation for kramdown-0.13.5...
+</span><span class='line'> Installing ri documentation for posix-spawn-0.3.6...
+</span><span class='line'> Installing ri documentation for albino-1.3.3...
+</span><span class='line'> Installing ri documentation for jekyll-0.11.2...
+</span><span class='line'> Installing RDoc documentation for fast-stemmer-1.0.0...
+</span><span class='line'> Installing RDoc documentation for classifier-1.3.3...
+</span><span class='line'> Installing RDoc documentation for directory_watcher-1.4.1...
+</span><span class='line'> Installing RDoc documentation for syntax-1.0.0...
+</span><span class='line'> Installing RDoc documentation for maruku-0.6.0...
+</span><span class='line'> Couldn't find file to include 'MaRuKu.txt' from lib/maruku.rb
+</span><span class='line'> Installing RDoc documentation for kramdown-0.13.5...
+</span><span class='line'> Installing RDoc documentation for posix-spawn-0.3.6...
+</span><span class='line'> Installing RDoc documentation for albino-1.3.3...
+</span><span class='line'> Installing RDoc documentation for jekyll-0.11.2...</span></code></pre></td></tr></table></div></figure>
+
+
+<p> Jekyllを動かす為にテンプレートとなるファイルをgit cloneする。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/04_clone_jekyll.png"></p>
+
+<p> https://github.com/plusjade/jekyll-bootstrap.git</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/05_clone_jekyll_branch.png">
+ブランチは全部とり込む。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/06_clone_jekyll_dest.png">
+出力先ディレクトリは作業用のものを指定する。例えばこんな感じ。
+ C:\development\ruby\taichi.github.com</p>
+
+<p>で、当該ディレクトリに移動してJekyllをサーバモードで起動する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> cd C:\development\ruby\taichi.github.com
+</span><span class='line'> jekyll --server</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうもしっくりこないので、Octopress も試してみる事にする。</p>
+
+<p><a href="http://octopress.org/docs/setup/">Octopress - Setup</a></p>
+
+<p>RVMかrbenvが必要との事。無視して先の作業をやってみたが、
+どうやら1.9.2に完全限定している様で1.9.3では動かない。最高に痺れる。
+Windowsで複数のRubyランタイムをインストールするにはpikを使うらしい。</p>
+
+<p><a href="https://github.com/vertiginous/pik">pik</a></p>
+
+<p>という訳でpikをインストール。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> gem install pik</span></code></pre></td></tr></table></div></figure>
+
+
+<p>PATH環境変数において現在動作しているRubyランタイムよりも前の部分にpikの環境をインストール為のディレクトリを指定する。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/07_pik.png"></p>
+
+<p> c:\pik;C:\Ruby193\bin</p>
+
+<p> という風になる。</p>
+
+<p>で、更にpikのインストール用シェルスクリプトを実行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> pik_install C:\pik</span></code></pre></td></tr></table></div></figure>
+
+
+<p>pikを使ってruby1.9.2をインストールする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> pik install ruby 1.9.2
+</span><span class='line'>
+</span><span class='line'> ** Downloading:  http://rubyforge.org/frs/download.php/71175/ruby-1.9.2dev-preview3-i386-mingw32-1.7z
+</span><span class='line'>   to:  C:\Users\taichi\.pik\downloads\ruby-1.9.2dev-preview3-i386-mingw32-1.7z
+</span><span class='line'> 
+</span><span class='line'> ruby-1.9.2dev-preview3-i...7z: 100% |oooooooooo|   5.7MB/  5.7MB Time: 00:01:05
+</span><span class='line'> 
+</span><span class='line'> You need the 7zip utility to extract this file.
+</span><span class='line'> Would you like me to download it? (yes/no)  |yes|</span></code></pre></td></tr></table></div></figure>
+
+
+<p>yesしろと言っているのでyesと入力してEnter</p>
+
+<p>やっとOctpressをcloneする。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/08_clone_octpress.png"></p>
+
+<p> git://github.com/imathis/octopress.git</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/09_clone_octpress_branch.png"></p>
+
+<p>ブランチは面倒なので全部とり込む。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/10_clone_octpress_dest.png">
+出力先ディレクトリは作業用のものを指定する。</p>
+
+<p>例えばこんな感じ。</p>
+
+<p> C:\development\ruby\octpress</p>
+
+<p>作業用のディレクトリに移動。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> cd C:\development\ruby\octpress</span></code></pre></td></tr></table></div></figure>
+
+
+<p>pikで1.9.2にrubyをスイッチ</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> pik 192</span></code></pre></td></tr></table></div></figure>
+
+
+<p>bundlerを1.9.2環境にインストールする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> gem install bundler</span></code></pre></td></tr></table></div></figure>
+
+
+<p>続けて、何か色々詰まったアレをインストールする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> bundle install
+</span><span class='line'>
+</span><span class='line'> Fetching gem metadata from http://rubygems.org/.......
+</span><span class='line'> Installing rake (0.9.2)
+</span><span class='line'> Installing RedCloth (4.2.8) with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
+</span><span class='line'> C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:483:in `rescue in block in build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
+</span><span class='line'> C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/bin/ruby.exe extconf.rb
+</span><span class='line'> checking for main() in -lc... *** extconf.rb failed ***
+</span><span class='line'> Could not create Makefile due to some reason, probably lack of
+</span><span class='line'> necessary libraries and/or headers.  Check the mkmf.log file for more
+</span><span class='line'> details.  You may need configuration options.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>nativeなアレがインストール出来ないと言っている。</p>
+
+<p>これはつまり、pikで構築した1.9.2環境にdevkitが入っていない為、怒られている。</p>
+
+<p>devkitのディレクトリにはさっき使ったconfig.ymlがあるのでそれを修正する。</p>
+
+<p>先ほどのエラーメッセージ内に1.9.2ランタイムが格納されているディレクトリが出力されているので、それをコピペ。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> - C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>devkitを1.9.2環境にインストールする。
+pikではコマンドプロンプト単位でしかrubyランタイムがスイッチされないので、
+新しいプロンプトを起動したのなら明示的にスイッチしてからインストール。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> pik 192
+</span><span class='line'> ruby dk.rb install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>気を取りなおして色々詰まったアレをインストール。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> bundle install
+</span><span class='line'>
+</span><span class='line'> Fetching gem metadata from http://rubygems.org/.......
+</span><span class='line'> Using rake (0.9.2)
+</span><span class='line'> Installing RedCloth (4.2.8) with native extensions
+</span><span class='line'> Installing posix-spawn (0.3.6) with native extensions
+</span><span class='line'> Installing albino (1.3.3)
+</span><span class='line'> Installing blankslate (2.1.2.4)
+</span><span class='line'> Installing chunky_png (1.2.1)
+</span><span class='line'> Installing fast-stemmer (1.0.0) with native extensions
+</span><span class='line'> Installing classifier (1.3.3)
+</span><span class='line'> Installing fssm (0.2.7)
+</span><span class='line'> Installing sass (3.1.5)
+</span><span class='line'> Installing compass (0.11.5)
+</span><span class='line'> Installing directory_watcher (1.4.0)
+</span><span class='line'> Installing ffi (1.0.9)
+</span><span class='line'> Installing haml (3.1.2)
+</span><span class='line'> Installing kramdown (0.13.3)
+</span><span class='line'> Installing liquid (2.2.2)
+</span><span class='line'> Installing syntax (1.0.0)
+</span><span class='line'> Installing maruku (0.6.0)
+</span><span class='line'> Installing jekyll (0.11.0)
+</span><span class='line'> Installing rubypython (0.5.1)
+</span><span class='line'> Installing pygments.rb (0.1.3)
+</span><span class='line'> Installing rack (1.3.2)
+</span><span class='line'> Installing rb-fsevent (0.4.3.1) with native extensions
+</span><span class='line'> Installing rdiscount (1.6.8) with native extensions
+</span><span class='line'> Installing rubypants (0.2.0)
+</span><span class='line'> Installing tilt (1.3.2)
+</span><span class='line'> Installing sinatra (1.2.6)
+</span><span class='line'> Installing stringex (1.3.0)
+</span><span class='line'> Using bundler (1.1.0)
+</span><span class='line'> Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>今度は入った様だ。octpressのディレクトリに移動する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> cd C:\development\ruby\octpress</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Octpressのテーマをインストールする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>GitHubPagesにデプロイする予定なので、その為の作業を行う。
+詳細はここに書いてある。</p>
+
+<p><a href="http://octopress.org/docs/deploying/github/">Deploying to Github Pages</a></p>
+
+<p>ここにきてコマンドプロンプトで動くGitが無いとダメ等と言われたので仕方なくmsysgitをインストール。</p>
+
+<p><a href="http://code.google.com/p/msysgit/downloads/list">msysgit/download</a></p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/11_install_msys_git.png">
+インストールディレクトリに半角スペースが含まれていると地獄を見る事になるので、
+その様な事がないようにディレクトリを選択する。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/12_install_msys_git_components.png">
+エクスプローラの拡張とかされても邪魔なだけなので全部外す。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/13_install_msys_git_prompt.png">
+Windowsのコマンドプロンプトから実行する。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/14_install_msys_git_crlf.png"></p>
+
+<p>改行コードを自動変換するとトラブるので無変換</p>
+
+<p>GitHubPages用のセットアップ</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake setup_github_pages
+</span><span class='line'>
+</span><span class='line'> Enter the read/write url for your repository: git@github.com:taichi/taichi.github.com.git
+</span><span class='line'> Added remote git@github.com:taichi/taichi.github.com.git as origin
+</span><span class='line'> Set origin as default remote
+</span><span class='line'> Master branch renamed to 'source' for committing your blog source files
+</span><span class='line'> Initialized empty Git repository in C:/development/ruby/octpress/_deploy/.git/
+</span><span class='line'> 'My Octopress Page is coming soon
+</span><span class='line'> 'hellip' は、内部コマンドまたは外部コマンド、
+</span><span class='line'> 操作可能なプログラムまたはバッチ ファイルとして認識されていません。
+</span><span class='line'> [master (root-commit) 7001a8d] Octopress init
+</span><span class='line'>  0 files changed, 0 insertions(+), 0 deletions(-)
+</span><span class='line'>  create mode 100644 index.html</span></code></pre></td></tr></table></div></figure>
+
+
+<p>何か聴いた事も無いようなコマンドを実行しようとしてエラーが出てindex.htmlが中身の無いものになるので、
+Rakefileの336行目を修正する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> - system "echo 'My Octopress Page is coming soon &hellip;' &gt; index.html"
+</span><span class='line'> + system "echo 'My Octopress Page is coming soon ' &gt; index.html"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>静的コンテンツの生成を行う。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake generate</span></code></pre></td></tr></table></div></figure>
+
+
+<p>テスト的にデプロイしてみる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>新しいエントリを作る</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake new_post["setup_Octopress_on_Windows7_x64"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この文章を出来たmarkdownファイルにコピペした上でコンテンツの生成。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake generate</span></code></pre></td></tr></table></div></figure>
+
+
+<p>エンコーディングのエラーが出る。マジ痺れる。サイコーだ。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> ## Generating Site with Jekyll
+</span><span class='line'> unchanged sass/screen.scss
+</span><span class='line'> Configuration from C:/development/ruby/octpress/_config.yml
+</span><span class='line'> Building site: source -&gt; public
+</span><span class='line'> C:/development/ruby/octpress/plugins/raw.rb:11:in `gsub': invalid byte sequence in Windows-31J (ArgumentError)
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/raw.rb:11:in `unwrap'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/octopress_filters.rb:18:in `post_filter'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/octopress_filters.rb:30:in `post_render'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:124:in `block in post_render'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:123:in `each'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:123:in `post_render'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:151:in `transform'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/convertible.rb:84:in `do_layout'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:167:in `do_layout'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/post.rb:189:in `render'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:193:in `block in render'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:192:in `each'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:192:in `render'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:40:in `process'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/bin/jekyll:250:in `&lt;top (required)&gt;'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/bin/jekyll:19:in `load'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/bin/jekyll:19:in `&lt;main&gt;'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>LANG環境変数を見てアレコレする様なので、環境変数を設定する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> set LANG=ja_JP.utf8</span></code></pre></td></tr></table></div></figure>
+
+
+<p>今度こそ…</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake generate</span></code></pre></td></tr></table></div></figure>
+
+
+<p>生成されたリソースを確認する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake preview
+</span><span class='line'>
+</span><span class='line'> Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+</span><span class='line'> Configuration from C:/development/ruby/octpress/_config.yml
+</span><span class='line'> Auto-regenerating enabled: source -&gt; public</span></code></pre></td></tr></table></div></figure>
+
+
+<p>という訳でWEBrickにブラウザでアクセス。</p>
+
+<ul>
+<li><a href="http://localhost:4000">localhost:4000</a></li>
+</ul>
+
+
+<p>何か出来たけどレイアウトｇｄｇｄなので、<a href="http://daringfireball.net/projects/markdown/">Markdown</a>記法を再確認しながら調整。</p>
+
+<p>編集しているといつの間にか更新しても反映されなくなっておかしいな…と思ったので、WEBrickを停止してgenerateしてみる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> rake generate
+</span><span class='line'>
+</span><span class='line'>## Generating Site with Jekyll
+</span><span class='line'>unchanged sass/screen.scss
+</span><span class='line'>Configuration from C:/development/ruby/octpress/_config.yml
+</span><span class='line'>Building site: source -&gt; public
+</span><span class='line'>  File "&lt;string&gt;", line 1
+</span><span class='line'>    'import
+</span><span class='line'>          ^
+</span><span class='line'>SyntaxError: EOL while scanning string literal
+</span><span class='line'>  File "&lt;string&gt;", line 1
+</span><span class='line'>    'import
+</span><span class='line'>          ^
+</span><span class='line'>SyntaxError: EOL while scanning string literal
+</span><span class='line'>C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/ffi-1.0.9-x86-mingw32/lib/ffi/library.rb:75:in `block in ffi_lib': Could not open library '.dll': 指定された(LoadError)見つかりません。
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/ffi-1.0.9-x86-mingw32/lib/ffi/library.rb:54:in `map'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/ffi-1.0.9-x86-mingw32/lib/ffi/library.rb:54:in `ffi_lib'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython/python.rb:29:in `&lt;module:Python&gt;'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython/python.rb:21:in `&lt;top (required)&gt;'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython.rb:261:in `load'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython.rb:261:in `reload_library'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython.rb:104:in `start'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/pygments.rb-0.1.3/lib/pygments/ffi.rb:8:in `start'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/pygments.rb-0.1.3/lib/pygments/ffi.rb:82:in `highlight'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/pygments_code.rb:24:in `pygments'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/pygments_code.rb:14:in `highlight'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/backtick_code_block.rb:37:in `block in render_code_block'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/backtick_code_block.rb:13:in `gsub'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/backtick_code_block.rb:13:in `render_code_block'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/octopress_filters.rb:12:in `pre_filter'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/octopress_filters.rb:27:in `pre_render'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:112:in `block in pre_render'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:111:in `each'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:111:in `pre_render'
+</span><span class='line'>        from C:/development/ruby/octpress/plugins/post_filters.rb:166:in `do_layout'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/post.rb:189:in `render'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:193:in `block in render'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:192:in `each'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:192:in `render'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/site.rb:40:in `process'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/bin/jekyll:250:in `&lt;top (required)&gt;'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/bin/jekyll:19:in `load'
+</span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/bin/jekyll:19:in `&lt;main&gt;'
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>問題の原因はこの辺らしい。</p>
+
+<p><a href="http://mattn.github.com/blog/2011/10/21/octopress-pygments-utf8/">Octopressのコードブロックでutf-8が使えないのが直った</a></p>
+
+<p>パッチはどうやら取り込まれていて、rubypython-0.5.3というのがリリース済な様だ。</p>
+
+<p>ライブラリのアップデートをかける。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> gem update
+</span><span class='line'> bundle update</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちょっと雑にアップデートし過ぎたかな…。これでも同じ様にエラーがでて上手く動かない。</p>
+
+<p>更に調べていくと、rubypython-0.5.3 でもまだ適切に動作しない様だ。</p>
+
+<p><a href="https://github.com/tmm1/pygments.rb/issues/10">Lib.so issues when calling Pygments::Lexer</a></p>
+
+<p>この中を読んでいくと、コードを修正したら上手く動いたよとある。</p>
+
+<p>こんな感じのパスにpythonexec.rbというファイルがあるので当該箇所を修正してみる。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\Users\taichi\.pik\rubies\Ruby-192dev-preview3-1\lib\ruby\gems\1.9.1\gems\rubypython-0.5.3\lib\rubypython\pythonexec.rb
+</span><span class='line'>
+</span><span class='line'>-- 126 %x(#{@python} -c "#{command}").chomp if @python
+</span><span class='line'>++ 126 %x("#{@python} -c #{command}").chomp if @python</span></code></pre></td></tr></table></div></figure>
+
+
+<p>126行目のダブルクォーテーションの位置が問題らしい。</p>
+
+<p>という訳で一晩かかってOctopressが動きましたとさ。。。もう疲れたよ…</p>
+
+<p>当分Rubyとは遊ばない。</p>
+]]></content>
+  </entry>
   
 </feed>
