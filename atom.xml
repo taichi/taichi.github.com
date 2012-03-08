@@ -4,7 +4,7 @@
   <title><![CDATA[Between design and implementation]]></title>
   <link href="http://taichi.github.com/atom.xml" rel="self"/>
   <link href="http://taichi.github.com/"/>
-  <updated>2012-03-09T06:36:05+09:00</updated>
+  <updated>2012-03-09T07:04:17+09:00</updated>
   <id>http://taichi.github.com/</id>
   <author>
     <name><![CDATA[taichi]]></name>
@@ -18,7 +18,9 @@
     <link href="http://taichi.github.com/blog/2012/03/09/setup-octopress-on-windows7-x64/"/>
     <updated>2012-03-09T03:56:00+09:00</updated>
     <id>http://taichi.github.com/blog/2012/03/09/setup-octopress-on-windows7-x64</id>
-    <content type="html"><![CDATA[<p>オレオレビルドを作り始めたりすると目的を見失いかねないので簡単そうなインストーラを使う。</p>
+    <content type="html"><![CDATA[<p>何かナウなヤングはモダンなブログシステムGitHubPagesで使うらしいので試してみたくなった。</p>
+
+<p>Rubyのオレオレビルドを作り始めたりすると目的を見失いかねないので簡単そうなインストーラを使う。</p>
 
 <p><a href="http://rubyinstaller.org/downloads/">rubyinstaller.org</a></p>
 
@@ -42,6 +44,8 @@
 
 <p>エラーがでよる…</p>
 
+<p>どうやらDevKitというやつをインストールしないといけないらしい。</p>
+
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -62,7 +66,7 @@
 
 <p>DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</p>
 
-<p>は単なる自己解凍書庫なので指定したパスに何か色々解凍される。
+<p>は単なる自己解凍書庫なので指定したパスに何か色々解凍される。<br/>
 とりあえずこのパスに解凍した。</p>
 
 <p> C:\Ruby193\devkit</p>
@@ -87,8 +91,8 @@
 </span><span class='line'> of the installed Rubies you want enhanced by the DevKit.</span></code></pre></td></tr></table></div></figure>
 
 
-<p>config.ymlが生成されてさっきインストールしたrubyのパスが入っている。
-僕の環境にはRubyは１つしか無いので特に修正する必要は無いようだ。
+<p>config.ymlが生成されてさっきインストールしたrubyのパスが入っている。<br/>
+僕の環境にはRubyは１つしか無いので特に修正する必要は無いようだ。<br/>
 何かdevkitのインストール的なアレを実行。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -123,7 +127,8 @@
 </span><span class='line'> Installing RDoc documentation for rdiscount-1.6.8...</span></code></pre></td></tr></table></div></figure>
 
 
-<p>ズラズラとログが流れる。上手くいってる様だ。このrdiscountが動くかどうか確かめる。</p>
+<p>ズラズラとログが流れる。上手くいってる様だ。<br/>
+このrdiscountが動くかどうか確かめる。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -252,13 +257,13 @@
 
 <p><a href="http://octopress.org/docs/setup/">Octopress - Setup</a></p>
 
-<p>RVMかrbenvが必要との事。無視して先の作業をやってみたが、
-どうやら1.9.2に完全限定している様で1.9.3では動かない。最高に痺れる。
-Windowsで複数のRubyランタイムをインストールするにはpikを使うらしい。</p>
+<p>RVMかrbenvが必要との事。無視して先の作業をやってみたが、</p>
 
-<p><a href="https://github.com/vertiginous/pik">pik</a></p>
+<p>どうやら1.9.2に完全限定している様で1.9.3では動かない。最高に痺れる。</p>
 
-<p>という訳でpikをインストール。</p>
+<p>Windowsで複数のRubyランタイムをインストールするには<a href="https://github.com/vertiginous/pik">pik</a>を使うらしい。</p>
+
+<p>という訳で<a href="https://github.com/vertiginous/pik">pik</a>をインストール。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'> gem install pik</span></code></pre></td></tr></table></div></figure>
@@ -375,8 +380,8 @@ Windowsで複数のRubyランタイムをインストールするにはpikを使
 </pre></td><td class='code'><pre><code class=''><span class='line'> - C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1</span></code></pre></td></tr></table></div></figure>
 
 
-<p>devkitを1.9.2環境にインストールする。
-pikではコマンドプロンプト単位でしかrubyランタイムがスイッチされないので、
+<p>devkitを1.9.2環境にインストールする。<br/>
+pikではコマンドプロンプト単位でしかrubyランタイムがスイッチされないので、<br/>
 新しいプロンプトを起動したのなら明示的にスイッチしてからインストール。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -467,8 +472,9 @@ pikではコマンドプロンプト単位でしかrubyランタイムがスイ�
 </pre></td><td class='code'><pre><code class=''><span class='line'> rake install</span></code></pre></td></tr></table></div></figure>
 
 
-<p>GitHubPagesにデプロイする予定なので、その為の作業を行う。
-詳細はここに書いてある。</p>
+<p>GitHubPagesにデプロイする予定なので、その為の作業を行う。</p>
+
+<p>詳細はここに書いてある。</p>
 
 <p><a href="http://octopress.org/docs/deploying/github/">Deploying to Github Pages</a></p>
 
@@ -476,21 +482,23 @@ pikではコマンドプロンプト単位でしかrubyランタイムがスイ�
 
 <p><a href="http://code.google.com/p/msysgit/downloads/list">msysgit/download</a></p>
 
-<p><img src="http://taichi.github.com/images/octopress_install/11_install_msys_git.png">
-インストールディレクトリに半角スペースが含まれていると地獄を見る事になるので、
-その様な事がないようにディレクトリを選択する。</p>
+<p><img src="http://taichi.github.com/images/octopress_install/11_install_msys_git.png"></p>
 
-<p><img src="http://taichi.github.com/images/octopress_install/12_install_msys_git_components.png">
-エクスプローラの拡張とかされても邪魔なだけなので全部外す。</p>
+<p>インストールディレクトリに半角スペースが含まれていると地獄を見る事になるので、その様な事がないようにディレクトリを選択する。</p>
 
-<p><img src="http://taichi.github.com/images/octopress_install/13_install_msys_git_prompt.png">
-Windowsのコマンドプロンプトから実行する。</p>
+<p><img src="http://taichi.github.com/images/octopress_install/12_install_msys_git_components.png"></p>
+
+<p>エクスプローラの拡張とかされても邪魔なだけなので全部外す。</p>
+
+<p><img src="http://taichi.github.com/images/octopress_install/13_install_msys_git_prompt.png"></p>
+
+<p>Windowsのコマンドプロンプトから実行する。</p>
 
 <p><img src="http://taichi.github.com/images/octopress_install/14_install_msys_git_crlf.png"></p>
 
 <p>改行コードを自動変換するとトラブるので無変換</p>
 
-<p>GitHubPages用のセットアップ</p>
+<p>GitHubPages用のセットアップを開始する。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -520,13 +528,13 @@ Windowsのコマンドプロンプトから実行する。</p>
 </span><span class='line'>  create mode 100644 index.html</span></code></pre></td></tr></table></div></figure>
 
 
-<p>何か聴いた事も無いようなコマンドを実行しようとしてエラーが出てindex.htmlが中身の無いものになるので、
+<p>何かきいた事も無いようなコマンドを実行しようとしてエラーが出てindex.htmlが中身の無いものになるので、
 Rakefileの336行目を修正する。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> - system "echo 'My Octopress Page is coming soon &hellip;' &gt; index.html"
-</span><span class='line'> + system "echo 'My Octopress Page is coming soon ' &gt; index.html"</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'> -- 336 system "echo 'My Octopress Page is coming soon &hellip;' &gt; index.html"
+</span><span class='line'> ++ 336 system "echo 'My Octopress Page is coming soon ' &gt; index.html"</span></code></pre></td></tr></table></div></figure>
 
 
 <p>静的コンテンツの生成を行う。</p>
@@ -541,7 +549,9 @@ Rakefileの336行目を修正する。</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'> rake deploy</span></code></pre></td></tr></table></div></figure>
 
 
-<p>新しいエントリを作る</p>
+<p>空っぽの何かがデプロイされた。鍵とかアカウント的なアレはOKな様だ。</p>
+
+<p>新しいエントリを作る。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'> rake new_post["setup_Octopress_on_Windows7_x64"]</span></code></pre></td></tr></table></div></figure>
@@ -601,7 +611,7 @@ Rakefileの336行目を修正する。</p>
 </span><span class='line'>        from C:/Users/taichi/.pik/rubies/Ruby-192dev-preview3-1/bin/jekyll:19:in `&lt;main&gt;'</span></code></pre></td></tr></table></div></figure>
 
 
-<p>LANG環境変数を見てアレコレする様なので、環境変数を設定する。</p>
+<p>RubyではLANG環境変数を見てアレコレする様なので、環境変数を設定する。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'> set LANG=ja_JP.utf8</span></code></pre></td></tr></table></div></figure>
@@ -636,7 +646,7 @@ Rakefileの336行目を修正する。</p>
 
 <p>何か出来たけどレイアウトｇｄｇｄなので、<a href="http://daringfireball.net/projects/markdown/">Markdown</a>記法を再確認しながら調整。</p>
 
-<p>編集しているといつの間にか更新しても反映されなくなっておかしいな…と思ったので、WEBrickを停止してgenerateしてみる。</p>
+<p>編集しているといつの間にか更新しても反映されなくなっておかしいな…と思ったのでWEBrickを停止してgenerateしてみる。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -764,6 +774,25 @@ Rakefileの336行目を修正する。</p>
 <p>126行目のダブルクォーテーションの位置が問題らしい。</p>
 
 <p>という訳で一晩かかってOctopressが動きましたとさ。。。もう疲れたよ…</p>
+
+<p>一応、考えられる事を整理しておこう。</p>
+
+<p>OctopressなのかJekyllなのか分からないけど、何かエラーが発生した時に黙って正常終了した上で、<br/>
+出力されるテキストファイルが0KBになるのは色々間違っている。</p>
+
+<p>rubypythonは、その名前から類推可能な程度にはヤバいモジュールで近づくと焼かれる。</p>
+
+<p>gemsだのbundleだの何か色々ありすぎて門外漢にとっては辛い。
+似たような機能であるかの様な印象をうけるものが複数あるのは普通にドハマリする。
+bundle updateしたら、gem updateってしなくても良かったんかな？</p>
+
+<p>Rubyランタイム入れてリポジトリをcloneした後に、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で全て終るようにして欲しい。</p>
 
 <p>当分Rubyとは遊ばない。</p>
 ]]></content>
