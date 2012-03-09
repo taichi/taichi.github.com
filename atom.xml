@@ -4,7 +4,7 @@
   <title><![CDATA[Between design and implementation]]></title>
   <link href="http://taichi.github.com/atom.xml" rel="self"/>
   <link href="http://taichi.github.com/"/>
-  <updated>2012-03-09T07:04:17+09:00</updated>
+  <updated>2012-03-09T14:21:17+09:00</updated>
   <id>http://taichi.github.com/</id>
   <author>
     <name><![CDATA[taichi]]></name>
@@ -18,7 +18,7 @@
     <link href="http://taichi.github.com/blog/2012/03/09/setup-octopress-on-windows7-x64/"/>
     <updated>2012-03-09T03:56:00+09:00</updated>
     <id>http://taichi.github.com/blog/2012/03/09/setup-octopress-on-windows7-x64</id>
-    <content type="html"><![CDATA[<p>何かナウなヤングはモダンなブログシステムGitHubPagesで使うらしいので試してみたくなった。</p>
+    <content type="html"><![CDATA[<p>何かナウなヤングはモダンなブログシステムをGitHubPagesで使うらしいので試してみたくなった。</p>
 
 <p>Rubyのオレオレビルドを作り始めたりすると目的を見失いかねないので簡単そうなインストーラを使う。</p>
 
@@ -307,7 +307,7 @@
 
 <p>yesしろと言っているのでyesと入力してEnter</p>
 
-<p>やっとOctpressをcloneする。</p>
+<p>やっとOctopressをcloneする。</p>
 
 <p><img src="http://taichi.github.com/images/octopress_install/08_clone_octpress.png"></p>
 
@@ -460,13 +460,13 @@ pikではコマンドプロンプト単位でしかrubyランタイムがスイ�
 </span><span class='line'> Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.</span></code></pre></td></tr></table></div></figure>
 
 
-<p>今度は入った様だ。octpressのディレクトリに移動する。</p>
+<p>今度は入った様だ。Octopressのディレクトリに移動する。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'> cd C:\development\ruby\octpress</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Octpressのテーマをインストールする。</p>
+<p>Octopressのテーマをインストールする。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'> rake install</span></code></pre></td></tr></table></div></figure>
@@ -782,6 +782,10 @@ Rakefileの336行目を修正する。</p>
 
 <p>rubypythonは、その名前から類推可能な程度にはヤバいモジュールで近づくと焼かれる。</p>
 
+<p>Jekyllの問題でもOctopressの問題でも無く、backtickの問題なんだろうけど、<br/>
+_config.ymlでpygments: falseになってるのにcode block使うとpygmentsが動くのは騙し討ちとしか思えない。<br/>
+どう考えてもおかしい。結局Octopressってあんまり使われてないんじゃねぇの？</p>
+
 <p>gemsだのbundleだの何か色々ありすぎて門外漢にとっては辛い。
 似たような機能であるかの様な印象をうけるものが複数あるのは普通にドハマリする。
 bundle updateしたら、gem updateってしなくても良かったんかな？</p>
@@ -793,6 +797,9 @@ bundle updateしたら、gem updateってしなくても良かったんかな？
 
 
 <p>で全て終るようにして欲しい。</p>
+
+<p>GitHubPagesはpushした後、反映されるまで数分掛かるので、その時間待ちがダルい。<br/>
+プロダクトサイトとして使うのは悪くない気がするけど、Blogとして使うのはイマイチ感タプシ。</p>
 
 <p>当分Rubyとは遊ばない。</p>
 ]]></content>
